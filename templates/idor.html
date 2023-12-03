@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+IDOR
+
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">IDOR - Небезопасные прямые ссылки на объекты</h1>
+    <p class="lead">
+        подменa одного из параметров URL-адреса веб-приложения для получения доступа к той информации, которая изначально скрыта от посторонних глаз.
+    </p>
+</div>
+
+
+
+{% if error %}
+
+<h2 align="center"> Неверный логин или пароль. Попробуй еще раз</h2>
+
+{% endif %}
+
+<div class="block">
+  <pre>
+    Попробуй зайти под кредами:
+      Username: prettyroseslover
+      Password: parola
+  </pre>
+</div>
+
+<div class="block" style="margin:50px;">
+  <form action="/idor" method="post" style="max-width: 300px;">
+    <div class="field">
+      <label class="label">Имя пользователя</label>
+      <div class="control">
+        <input class="input" name="username" type="text" placeholder="username" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Пароль</label>
+      <div class="control">
+        <input class="input" name="password" type="password" placeholder="********" required>
+      </div>
+    </div>
+    
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Войти</button>
+      </div>
+    </div>
+  </form>
+  
+</div>
+
+
+{% endblock %}

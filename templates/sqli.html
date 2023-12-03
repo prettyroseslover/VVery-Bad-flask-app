@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+SQLI
+
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">SQL Injection</h1>
+    <p class="lead">
+        один из распространённых способов взлома сайтов и программ, работающих с базами данных, основанный на внедрении в запрос произвольного SQL-кода.
+    </p>
+</div>
+
+
+<div class="block" style="margin:50px;">
+  <form action="/sqli" method="post" style="max-width: 300px;">
+    <div class="field">
+      <label class="label">Имя пользователя</label>
+      <div class="control">
+        <input class="input" name="username" type="text" placeholder="Имя пользователя" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Пароль</label>
+      <div class="control">
+        <input class="input" name="password" type="password" placeholder="********" required>
+      </div>
+    </div>
+    
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Войти</button>
+      </div>
+    </div>
+    {% if user == True %}
+      <div class="notification is-success">
+        Вы успешно вошли!
+      </div>
+    {% elif user == False %}
+      <div class="notification is-danger">
+        Неверные логин или пароль.
+      </div>
+    {% elif user == None %}
+    {% endif %}
+  </form>
+  
+</div>
+
+{% endblock %}

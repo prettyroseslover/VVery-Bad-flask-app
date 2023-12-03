@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+XSS
+
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">XSS - межсайтовый скриптинг</h1>
+    <p class="lead">
+        подтип атаки на веб-системы, заключающийся во внедрении в выдаваемую веб-системой страницу вредоносного кода (который будет выполнен на компьютере пользователя при открытии им этой страницы) и взаимодействии этого кода с веб-сервером злоумышленника. Является разновидностью атаки «Внедрение кода».
+    </p>
+  </div>
+
+  <div class="block" style="margin:50px;">
+    <p>
+      <i>Искать</i>:
+      
+      {% autoescape false %}
+        {{ request.args.get('search') }}
+      {% endautoescape %}
+    </p>
+  </div>
+
+  <div class="block" style="margin:50px;">
+    <form action="/xss" method="get" style="max-width: 300px;">
+      <div class="field">
+        <label class="label">Найди книгу по названию!</label>
+        <div class="control">
+          <input class="input" name="search" type="text" placeholder="Введи название книги">
+        </div>
+      </div>
+      
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Искать!</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="block" style="margin:50px;">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Цена, $</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for b in books %}
+          <tr>
+            <td>{{ b.name }}</td>
+            <td>{{ b.price }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% endblock %}

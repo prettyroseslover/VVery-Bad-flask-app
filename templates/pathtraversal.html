@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Path Traversal
+
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Path Traversal</h1>
+    <p class="lead">
+        позволяет злоумышленнику получать несанкционированный доступ к различным файлам и папкам системы. Как правило, такие атаки предполагают использование dot-dot-slash последовательностей (relative path traversal) или абсолютных путей вместо относительных (absolute path traversal).
+    </p>
+
+</div>
+
+  <img src="{{ url_for('path_traversal_img') }}?img=666.jpg" alt="cat picture">
+
+{% endblock %}

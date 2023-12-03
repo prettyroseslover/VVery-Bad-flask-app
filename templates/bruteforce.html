@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Brute Force
+
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Brute Force</h1>
+    <p class="lead">
+        метод взлома, при котором хакер подбирает разные варианты логинов, паролей и ключей шифрования. Цель — войти в систему или получить доступ к защищённым данным.
+    </p>
+</div>
+
+{% if user is none %}
+          
+<h3 style="margin:50px;"> Вы еще не в системе! </h3>
+
+          <div class="block" style="margin:50px;">
+            <form action="/bruteforce" method="post" style="max-width: 300px;">
+              <div class="field">
+                <label class="label">Имя пользователя</label>
+                <div class="control">
+                  <input class="input" name="username" type="text" placeholder="Имя пользователя" required>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Пароль</label>
+                <div class="control">
+                  <input class="input" name="password" type="password" placeholder="********" required>
+                </div>
+              </div>
+              
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Войти</button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+          
+    {% else %}
+    <h1 class="display-4" align="center">О нет, не было лимитов для {{ user }}!!!</h1>
+    {% endif %}
+
+{% endblock %}
