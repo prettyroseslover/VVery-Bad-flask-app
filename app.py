@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from vuln.xss.xss import xss_page
-from vuln.pathtrav.pathtrav import path_traversal_page, path_traversal_image
 from vuln.idor.idor import idor_page, idor_api, idor_next_page
 from vuln.sqli.sqli import sqli_page, sqli_api
-from vuln.osci.osci import os_page, os_api
+from vuln.osci.osci import os_page
+from vuln.pathtrav.pathtrav import path_traversal_page, path_traversal_image
 from vuln.bruteforce.bruteforce import brute_page, brute_api
 
 from db_helper import db_helper
@@ -50,12 +50,10 @@ def sqli():
     return sqli_api(request, app)
 
 #OS command injection
-@app.route('/os', methods=['GET', 'POST'])
+@app.route('/os', methods=['GET'])
 def os_injection():
-    if request.method == 'GET':
-        return os_page(request, app)
+   return os_page(request, app)
 
-    return os_api(request, app) 
 
 #Path Traversal
 @app.route('/pathtraversal', methods=['GET'])

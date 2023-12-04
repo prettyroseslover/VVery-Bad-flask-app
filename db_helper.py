@@ -28,7 +28,6 @@ class DbHelper:
             con = self._get_db_connection()
             cur = con.cursor()
 
-            # cur.execute("select * from lang where first_appeared=:year", {"year": 1972})
             cur.execute(sql, params)
             result = cur.fetchall()
 
