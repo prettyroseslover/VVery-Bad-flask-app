@@ -38,30 +38,6 @@ class DbHelper:
             if con is not None:
                 con.close()
 
-    def execute_write(self, sql, params):
-        con = None
-        try:
-            con = self._get_db_connection()
-            cur = con.cursor()
-            result = cur.execute(sql, params)
-            con.commit()
-
-            return result
-
-        except Exception as err:
-            if con is not None:
-                con.rollback()
-            
-            raise err
-        finally:
-            if con is not None:
-                con.close()
-
-    
-    def reset_database(self):
-        os.remove(self.DB_FILE_PATH)
-        self.initialize()
-
 
     def _create_database(self):
         con = None
