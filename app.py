@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import os
 from vuln.xss.xss import xss_page
 from vuln.idor.idor import idor_page, idor_api, idor_next_page

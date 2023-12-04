@@ -13,7 +13,3 @@ def os_page(request, app):
 
     return render_template('os.html', result=result)
     
-
-
-def os_api(request, app):
-    pass
