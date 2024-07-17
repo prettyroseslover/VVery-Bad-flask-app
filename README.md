@@ -50,7 +50,7 @@ admin' OR '1'='1
 
 #### OS command injection
 
-Запустим слудеющий curl-запрос: 
+Запустим следующий curl-запрос: 
 
 ```
 curl -g 'http://127.0.0.1:5000/os?hostname=8.8.8.8%20-c%203%20|%20cat%20app.py'
